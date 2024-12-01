@@ -4,288 +4,321 @@
 
 // faire un tableau avec tous les chiffrers et leur correspondance !!!!!!!!!!
 const chiffre = [
-  1,
   {
+    numero: 1,
     color: "red",
     isOdd: true,
     tierDroite: "downSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  2,
+
   {
+    numero: 2,
     color: "black",
     isOdd: false,
     tierDroite: "middleSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  3,
+
   {
+    numero: 3,
     color: "red",
     isOdd: true,
     tierDroite: "upSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  4,
+
   {
+    numero: 4,
     color: "black",
     isOdd: false,
     tierDroite: "downSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  5,
+
   {
+    numero: 5,
     color: "red",
     isOdd: true,
     tierDroite: "middleSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  6,
+
   {
+    numero: 6,
     color: "black",
     isOdd: false,
     tierDroite: "upSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  7,
+
   {
+    numero: 7,
     color: "red",
     isOdd: true,
     tierDroite: "downSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  8,
+
   {
+    numero: 8,
     color: "black",
     isOdd: false,
     tierDroite: "middleSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  9,
+
   {
+    numero: 9,
     color: "red",
     isOdd: true,
     tierDroite: "upSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  10,
+
   {
+    numero: 10,
     color: "black",
     isOdd: false,
     tierDroite: "downSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  11,
+
   {
+    numero: 11,
     color: "black",
     isOdd: true,
     tierDroite: "middleSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  12,
+
   {
+    numero: 12,
     color: "red",
     isOdd: false,
     tierDroite: "upSide",
     tierBas: "premTier",
     half: "firstHalf",
   },
-  13,
+
   {
+    numero: 13,
     color: "black",
     isOdd: true,
     tierDroite: "downSide",
     tierBas: "deuxTier",
     half: "firstHalf",
   },
-  14,
+
   {
+    numero: 14,
     color: "red",
     isOdd: false,
     tierDroite: "middleSide",
     tierBas: "deuxTier",
     half: "firstHalf",
   },
-  15,
+
   {
+    numero: 15,
     color: "black",
     isOdd: true,
     tierDroite: "upSide",
     tierBas: "deuxTier",
     half: "firstHalf",
   },
-  16,
+
   {
+    numero: 16,
     color: "red",
     isOdd: false,
     tierDroite: "downSide",
     tierBas: "deuxTier",
     half: "firstHalf",
   },
-  17,
+
   {
+    numero: 17,
     color: "black",
     isOdd: true,
     tierDroite: "middleSide",
     tierBas: "deuxTier",
     half: "firstHalf",
   },
-  18,
+
   {
+    numero: 18,
     color: "red",
     isOdd: false,
     tierDroite: "upSide",
     tierBas: "deuxTier",
     half: "firstHalf",
   },
-  19,
+
   {
+    numero: 19,
     color: "red",
     isOdd: true,
-    tierDroite: "downSide",
-    tierBas: "deuxTier",
-    half: "secondHalf",
-  },
-  20,
-  {
-    color: "black",
-    isOdd: false,
-    tierDroite: "middleSide",
-    tierBas: "deuxTier",
-    half: "secondHalf",
-  },
-  21,
-  {
-    color: "red",
-    isOdd: true,
-    tierDroite: "upSide",
-    tierBas: "deuxTier",
-    half: "secondHalf",
-  },
-  22,
-  {
-    color: "black",
-    isOdd: false,
     tierDroite: "downSide",
     tierBas: "deuxTier",
     half: "secondHalf",
   },
-  23,
+
   {
+    numero: 20,
+    color: "black",
+    isOdd: false,
+    tierDroite: "middleSide",
+    tierBas: "deuxTier",
+    half: "secondHalf",
+  },
+
+  {
+    numero: 21,
+    color: "red",
+    isOdd: true,
+    tierDroite: "upSide",
+    tierBas: "deuxTier",
+    half: "secondHalf",
+  },
+
+  {
+    numero: 22,
+    color: "black",
+    isOdd: false,
+    tierDroite: "downSide",
+    tierBas: "deuxTier",
+    half: "secondHalf",
+  },
+
+  {
+    numero: 23,
     color: "red",
     isOdd: true,
     tierDroite: "middleSide",
     tierBas: "deuxTier",
     half: "secondHalf",
   },
-  24,
+
   {
+    numero: 24,
     color: "black",
     isOdd: false,
     tierDroite: "upSide",
     tierBas: "deuxTier",
     half: "secondHalf",
   },
-  25,
+
   {
+    numero: 25,
     color: "red",
     isOdd: true,
     tierDroite: "downSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  26,
+
   {
+    numero: 26,
     color: "black",
     isOdd: false,
     tierDroite: "middleSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  27,
+
   {
+    numero: 27,
     color: "red",
     isOdd: true,
     tierDroite: "upSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  28,
+
   {
+    numero: 28,
     color: "black",
     isOdd: false,
     tierDroite: "downSide",
     tierBas: "pretroisTiermTier",
     half: "secondHalf",
   },
-  29,
+
   {
+    numero: 29,
     color: "black",
     isOdd: true,
     tierDroite: "middleSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  30,
+
   {
+    numero: 30,
     color: "red",
     isOdd: false,
     tierDroite: "upSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  31,
+
   {
+    numero: 31,
     color: "black",
     isOdd: true,
     tierDroite: "downSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  32,
+
   {
+    numero: 32,
     color: "red",
     isOdd: false,
     tierDroite: "middleSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  33,
+
   {
+    numero: 33,
     color: "black",
     isOdd: true,
     tierDroite: "upSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  34,
   {
+    numero: 34,
     color: "red",
     isOdd: false,
     tierDroite: "downSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  35,
   {
+    numero: 35,
     color: "black",
     isOdd: true,
     tierDroite: "middleSide",
     tierBas: "troisTier",
     half: "secondHalf",
   },
-  36,
+
   {
+    numero: 36,
     color: "red",
     isOdd: false,
     tierDroite: "upSide",
