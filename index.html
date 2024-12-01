@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roulette</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="rouletteContainer">
+      <div id="rouletteWheel"></div>
+      <div id="resultat"></div>
+      <div id="credit"></div>
+      <div>
+        <p id="mise">Votre mise : 0</p>
+        <button id="mise1">1</button>
+        <button id="mise5">5</button>
+        <button id="mise10">10</button>
+        <button id="mise50">50</button>
+        <button id="miseTout">ALL IN</button>
+        <button id="annulMise">Annuler mise</button>
+      </div>
+      <div>
+        <button id="buttonResult">Faites vos jeux</button>
+      </div>
+    </div>
+    <div id="roulettePlateauHorizontal">
+      <table class="zero">
+        <td id="0" class="green">0</td>
+      </table>
+      <table class="upperPlateau">
+        <tr>
+          <td class="chiffre" id="3">3</td>
+          <td class="chiffre" id="6">6</td>
+          <td class="chiffre" id="9">9</td>
+          <td class="chiffre" id="12">12</td>
+          <td class="chiffre" id="15">15</td>
+          <td class="chiffre" id="18">18</td>
+          <td class="chiffre" id="21">21</td>
+          <td class="chiffre" id="24">24</td>
+          <td class="chiffre" id="27">27</td>
+          <td class="chiffre" id="30">30</td>
+          <td class="chiffre" id="33">33</td>
+          <td class="chiffre" id="36">36</td>
+          <td class="condition" id="upSide">2 to 1</td>
+        </tr>
+        <tr>
+          <td class="chiffre" id="2">2</td>
+          <td class="chiffre" id="5">5</td>
+          <td class="chiffre" id="8">8</td>
+          <td class="chiffre" id="11">11</td>
+          <td class="chiffre" id="14">14</td>
+          <td class="chiffre" id="17">17</td>
+          <td class="chiffre" id="20">20</td>
+          <td class="chiffre" id="23">23</td>
+          <td class="chiffre" id="26">26</td>
+          <td class="chiffre" id="29">29</td>
+          <td class="chiffre" id="32">32</td>
+          <td class="chiffre" id="35">35</td>
+          <td class="condition" id="middleSide">2 to 1</td>
+        </tr>
+        <tr>
+          <td class="chiffre" id="1">1</td>
+          <td class="chiffre" id="4">4</td>
+          <td class="chiffre" id="7">7</td>
+          <td class="chiffre" id="10">10</td>
+          <td class="chiffre" id="13">13</td>
+          <td class="chiffre" id="16">16</td>
+          <td class="chiffre" id="19">19</td>
+          <td class="chiffre" id="22">22</td>
+          <td class="chiffre" id="25">25</td>
+          <td class="chiffre" id="28">28</td>
+          <td class="chiffre" id="31">31</td>
+          <td class="chiffre" id="34">34</td>
+          <td class="condition" id="downSide">2 to 1</td>
+        </tr>
+      </table>
+    </div>
+    <table class="middlePlateau">
+      <tr>
+        <td class="condition" id="F12">1st 12</td>
+        <td class="condition" id="S12">2nd 12</td>
+        <td class="condition" id="T12">3rd 12</td>
+      </tr>
+    </table>
+    <table class="downPlateau">
+      <tr>
+        <td class="condition" id="one18">1 to 18</td>
+        <td class="condition" id="even">EVEN</td>
+        <td class="condition" id="red" class="red">RED</td>
+        <td class="condition" id="black" class="black">BLACK</td>
+        <td class="condition" id="odd">ODD</td>
+        <td class="condition" id="nineteen36">19 to 36</td>
+      </tr>
+    </table>
+
+    <script src="./script.js"></script>
+    <script src="./script2.js"></script>
+    <script src="./script3.js"></script>
+  </body>
+</html>

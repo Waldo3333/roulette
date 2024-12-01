@@ -1,0 +1,99 @@
+body {
+  background-color: rgb(117, 90, 10);
+  color: white;
+}
+
+/*------------------------------------------------Création de la roue*/
+.red {
+  background-color: red;
+}
+.black {
+  background-color: black;
+}
+.green {
+  background-color: rgb(26, 171, 24);
+}
+
+#rouletteWheel {
+  width: 400px; /* Taille du cercle */
+  height: 400px;
+  border-radius: 50%; /* Transforme le conteneur en cercle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.slot {
+  position: absolute; /* Pour placer chaque case individuellement */
+  width: 30px;
+  height: 30px;
+  line-height: 30px; /* Centrer le texte verticalement */
+  text-align: center;
+  border-radius: 90%; /* Transforme chaque case en cercle */
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  transform-origin: 50% 200px; /* Point d'origine pour le positionnement */
+}
+#rouletteContainer {
+  display: flex;
+  align-items: center;
+}
+/*------------------------------------------------Création du plateau*/
+#roulettePlateauHorizontal {
+  display: flex;
+}
+
+td {
+  border: 2px solid rgb(255, 255, 255);
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: rgb(153, 113, 52);
+  cursor: pointer;
+}
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: rgb(153, 113, 52);
+}
+.upperPlateau {
+  min-width: 300px;
+  min-height: 300px;
+}
+.upperPlateau td {
+  min-height: 100px;
+  width: 100px;
+  height: 100px;
+}
+.middlePlateau {
+  width: 300px;
+  max-height: 100px;
+}
+
+.middlePlateau td {
+  width: 400px;
+  height: 80px;
+}
+.downPlateau {
+  min-width: 300px;
+  max-height: 100px;
+}
+.downPlateau td {
+  min-width: 200px;
+  height: 80px;
+}
+
+.zero {
+  min-width: 100px;
+  min-height: 100px;
+  background-color: rgb(26, 171, 24);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
