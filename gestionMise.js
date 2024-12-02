@@ -15,9 +15,10 @@ const annulMise = document.getElementById("annulMise");
 function mise1(montant) {
   if (credit >= montant) {
     mise = mise + montant;
-    credit = credit - montant;
+    ///erreue par la
     document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
     displayCredit.innerHTML = `Crédit restant : ${credit}`;
+    soustraireMise(montant);
   } else {
     alert("pas assez en banque");
   }
@@ -35,7 +36,6 @@ function miseAll() {
 function annulerMise() {
   credit = credit + mise;
   mise = 0;
-
   document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
   displayCredit.innerHTML = `Crédit restant : ${credit}`;
 }
@@ -45,3 +45,8 @@ boutonMise10.addEventListener("click", () => mise1(10));
 boutonMise50.addEventListener("click", () => mise1(50));
 boutonMiseTout.addEventListener("click", miseAll);
 annulMise.addEventListener("click", annulerMise);
+
+function soustraireMise(mise) {
+  credit = credit - mise;
+  displayCredit.innerHTML = `Crédit restant : ${credit}`;
+}
