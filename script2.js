@@ -12,10 +12,10 @@ const boutonMise50 = document.getElementById("mise50");
 const boutonMiseTout = document.getElementById("miseTout");
 const annulMise = document.getElementById("annulMise");
 
-function mise1(e) {
-  if (credit >= e) {
-    mise = mise + e;
-    credit = credit - e;
+function mise1(montant) {
+  if (credit >= montant) {
+    mise = mise + montant;
+    credit = credit - montant;
     document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
     displayCredit.innerHTML = `Crédit restant : ${credit}`;
   } else {

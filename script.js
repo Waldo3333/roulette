@@ -1,3 +1,5 @@
+// Ajouter la classe couleur correspondante
+
 const chiffrePlateau = document.getElementsByClassName("chiffre");
 
 Array.from(chiffrePlateau).forEach(element => {
@@ -16,7 +18,6 @@ Array.from(chiffrePlateau).forEach(element => {
     colorClass = number % 2 === 0 ? "red" : "black";
   }
 
-  // Ajouter la classe correspondante
   element.classList.add(colorClass);
 });
 /*--------------------------------------------------------Création de la roue*/
