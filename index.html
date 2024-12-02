@@ -8,10 +8,13 @@
   </head>
   <body>
     <div id="rouletteContainer">
-      <div id="rouletteWheel"></div>
-      <div id="resultatDisplay"></div>
-      <div id="credit"></div>
-      <div>
+      <div class="infoTop" id="rouletteWheel"></div>
+      <div class="infoTop" id="resultatDisplay">RESULTAT :</div>
+      <div class="infoTop" id="credit">
+        Crédit restant :<br />
+        100
+      </div>
+      <div class="infoTop">
         <p id="mise">Votre mise : 0</p>
         <button id="mise1">1</button>
         <button id="mise5">5</button>
@@ -19,11 +22,13 @@
         <button id="mise50">50</button>
         <button id="miseTout">ALL IN</button>
         <button id="annulMise">Reset montant mise</button>
+        <button id="retirPari">Annuler les paris</button>
       </div>
-      <div>
+      <div class="infoTop">
         <button id="buttonResult">Faites vos jeux</button>
       </div>
     </div>
+    <div class="displayPariPlacees" id="displayPariPlacees">Vos paris :</div>
     <div id="roulettePlateauHorizontal">
       <table class="zero">
         <td id="0" class="green">0</td>

@@ -664,7 +664,7 @@ function checkNumberWin(resultat) {
       alert(
         ` votre mise sur le ${key} est perdante,vous avez perdu ${value} crédit`
       );
-      displayCredit.innerHTML = `Crédit restant : ${credit}`;
+      upDateCredit();
     }
   });
 }
@@ -677,7 +677,7 @@ function checkConditionDoubleWin(resultat) {
       alert(`Votre mise sur ${key} est gagnante`);
       let gain = value * 2;
       credit += gain;
-      displayCredit.innerHTML = `Crédit restant : ${credit}`;
+      upDateCredit();
     } else {
       alert(`Votre mise sur ${key} est perdante`);
     }
@@ -692,7 +692,7 @@ function checkConditionTripleWin(resultat) {
       alert(`Votre mise sur ${key} est gagnante`);
       let gain = value * 3;
       credit += gain;
-      displayCredit.innerHTML = `Crédit restant : ${credit}`;
+      upDateCredit();
     } else {
       alert(`Votre mise sur ${key} est perdante`);
     }
@@ -706,17 +706,18 @@ function resetParis() {
 }
 function resetMontantMise() {
   mise = 0;
-  document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
+  upDateMise();
 }
 
 //--------------------------------------fonction mère !!!!! ////
 
 function generateRandomResult() {
   const resultat = Math.floor(Math.random() * 37);
-  displayResult.innerHTML = "RESULTAT " + resultat;
+  displayResult.innerHTML = "RESULTAT :" + resultat;
   checkNumberWin(resultat);
   checkConditionDoubleWin(resultat);
   checkConditionTripleWin(resultat);
   resetMontantMise();
   resetParis();
+  eraseDisplayParis();
 }

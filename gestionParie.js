@@ -4,7 +4,49 @@ let miseParieChiffres = {};
 let miseParieConditionsDouble = {};
 let miseParieConditionsTriple = {};
 
+//Afficher les mises placées
+const displayParis = document.getElementById("displayPariPlacees");
+
+function updateParis(caseId, value) {
+  const newPari = document.createElement("div");
+  newPari.textContent = `Mise de ${value} sur la case ${caseId}`;
+  displayParis.appendChild(newPari); // Ajoute à l'affichage existant.
+}
+//Effacer les mises placées affichées
+function eraseDisplayParis() {
+  displayParis.innerHTML = "Vos paris :";
+}
+
+/* -----------------------------Retirer les paris */
+const deletButton = document.getElementById("retirPari");
+
+function deletBet() {
+  if (Object.keys(miseParieChiffres).length > 0) {
+    Object.entries(miseParieChiffres).forEach(([key, value]) => {
+      credit += value; // Ajoute la mise au crédit
+    });
+    miseParieChiffres = {}; // Vide l'objet après traitement
+  }
+  if (Object.keys(miseParieConditionsDouble).length > 0) {
+    Object.entries(miseParieConditionsDouble).forEach(([key, value]) => {
+      credit += value; // Ajoute la mise au crédit
+    });
+    miseParieConditionsDouble = {}; // Vide l'objet après traitement
+  }
+
+  if (Object.keys(miseParieConditionsTriple).length > 0) {
+    Object.entries(miseParieConditionsTriple).forEach(([key, value]) => {
+      credit += value; // Ajoute la mise au crédit
+    });
+    miseParieConditionsTriple = {}; // Vide l'objet après traitement
+  }
+
+  resetParis();
+  upDateCredit();
+  eraseDisplayParis();
+}
 /*------------------Récuperer les id et les stocker avec les mises*/
+
 //pour les chiffres simple x36
 function parierChiffre(caseId) {
   if (mise === 0) {
@@ -16,6 +58,7 @@ function parierChiffre(caseId) {
     } else {
       miseParieChiffres[caseId] = mise;
     }
+    updateParis(caseId, miseParieChiffres[caseId]);
   }
 }
 //pour les conditions x2
@@ -29,6 +72,7 @@ function parierConditionDouble(caseId) {
     } else {
       miseParieConditionsDouble[caseId] = mise;
     }
+    updateParis(caseId, miseParieConditionsDouble[caseId]);
   }
 }
 //pour les conditions x3
@@ -41,6 +85,7 @@ function parierConditionTriple(caseId) {
     } else {
       miseParieConditionsTriple[caseId] = mise;
     }
+    updateParis(caseId, miseParieConditionsTriple[caseId]);
   }
 }
 
@@ -51,9 +96,8 @@ function init() {
     caseElement.addEventListener("click", () => {
       const caseId = caseElement.id;
       parierChiffre(caseId);
-      document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
-      displayCredit.innerHTML = `Crédit restant : ${credit}`;
-      console.log("Mise parie chiffres:", miseParieChiffres);
+      upDateMise();
+      upDateCredit();
       resetMontantMise();
     });
   });
@@ -64,9 +108,8 @@ function init() {
       const caseId = caseElement.id;
       parierConditionDouble(caseId);
 
-      document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
-      displayCredit.innerHTML = `Crédit restant : ${credit}`;
-      console.log("Mise parie condition double:", miseParieConditionsDouble);
+      upDateMise();
+      upDateCredit();
       resetMontantMise();
     });
   });
@@ -76,11 +119,14 @@ function init() {
     caseElement.addEventListener("click", () => {
       const caseId = caseElement.id;
       parierConditionTriple(caseId);
-      document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
-      displayCredit.innerHTML = `Crédit restant : ${credit}`;
-      console.log("Mise parie condition triple:", miseParieConditionsTriple);
+      upDateMise();
+      upDateCredit();
       resetMontantMise();
     });
+  });
+  // pour annuler la mise
+  deletButton.addEventListener("click", () => {
+    deletBet();
   });
 }
 init();
