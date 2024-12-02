@@ -1,19 +1,3 @@
-const numberOrdre = [
-  0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24,
-  16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26,
-];
-const totalSlots = 36; // Nombre de cases
-
-const td = document.getElementsByClassName("chiffre");
-
-/*--------------------------------------------------------Création du plateau*/
-
-let plateau = document.getElementById("roulettePlateau");
-
-plateauContent = "";
-
-for (let i = 0; i <= totalSlots; i++) {}
-
 const chiffrePlateau = document.getElementsByClassName("chiffre");
 
 Array.from(chiffrePlateau).forEach(element => {
@@ -36,7 +20,21 @@ Array.from(chiffrePlateau).forEach(element => {
   element.classList.add(colorClass);
 });
 /*--------------------------------------------------------Création de la roue*/
+
 /*let wheel = document.getElementById("rouletteWheel");
+const td = document.getElementsByClassName("chiffre");
+
+
+
+let plateau = document.getElementById("roulettePlateau");
+
+plateauContent = "";
+const numberOrdre = [
+  0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24,
+  16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26,
+];
+const totalSlots = 36; // Nombre de cases
+for (let i = 0; i <= totalSlots; i++) {}
 let wheelContent = "";
 const radius = 180; // Rayon du cercle
 wheelContent = "";
