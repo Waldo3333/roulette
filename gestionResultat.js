@@ -1,5 +1,5 @@
-/*--------------------------------------------------------RESULTATS*/
-//---- info chiffres/nombres
+/*---------------------------------------------!!!!! RESULTATS !!!!!---------------------------------------*/
+/*-----info chiffres/nombres----*/
 const chiffre = [
   {
     numero: 0,
@@ -645,11 +645,9 @@ const chiffre = [
     secondHalf: true,
   },
 ];
+/*-------------------------------------------------CHECKER LES WINS---------------------------------------*/
 
-const displayResult = document.getElementById("resultatDisplay");
-
-// check Win Numero Exacte
-
+/*---------------------------------Check Win Numero Exacte-------*/
 function checkNumberWin(resultat) {
   Object.entries(miseParieChiffres).forEach(([key, value]) => {
     if (key === resultat) {
@@ -671,9 +669,7 @@ function checkNumberWin(resultat) {
     }
   });
 }
-
-// check Win Condition double la mise
-
+/*-------------------------------------Check Win Condition 2----*/
 function checkConditionDoubleWin(resultat) {
   Object.entries(miseParieConditionsDouble).forEach(([key, value]) => {
     if (chiffre[resultat][key]) {
@@ -694,9 +690,7 @@ function checkConditionDoubleWin(resultat) {
     }
   });
 }
-
-// check Win Condition Triple la mise
-
+/*----------------------------------------Check Win Condition x3----*/
 function checkConditionTripleWin(resultat) {
   Object.entries(miseParieConditionsTriple).forEach(([key, value]) => {
     if (chiffre[resultat][key]) {
@@ -718,38 +712,24 @@ function checkConditionTripleWin(resultat) {
   });
 }
 
+/* --------------------------Vider les objets----- */
 function resetParis() {
   miseParieChiffres = {};
   miseParieConditionsDouble = {};
   miseParieConditionsTriple = {};
 }
+/* --------------------------Reset mise à O----- */
 function resetMontantMise() {
   mise = 0;
   upDateMise();
 }
 
-//--------------------------------------fonction mère !!!!! ////
+//----------------------------------- AFFICHAGE RESULTAT + CHECK WIN------------------------------------ ////
 
-// implantation d'un chrono de 30 seconde avant le résultat
-
-function startTimer(duration, display) {
-  let timer = duration;
-  const interval = setInterval(() => {
-    const seconds = timer--; // Décrémente le timer
-    display.textContent = seconds;
-
-    if (timer < 0) {
-      clearInterval(interval); // Stoppe le minuteur
-      display.textContent = "Rien ne va plus !";
-      generateRandomResult();
-      startTimer(20, timerDisplay);
-    }
-  }, 1000); // Met à jour toutes les secondes
-}
-
-// Récupère l'élément d'affichage du minuteur
 const timerDisplay = document.getElementById("timer");
+const displayResult = document.getElementById("resultatDisplay");
 
+/* ------------------------function qui Genere le résultat --- */
 function generateRandomResult() {
   const resultat = Math.floor(Math.random() * 37);
   displayResult.innerHTML = "RESULTAT :" + resultat;
@@ -759,6 +739,23 @@ function generateRandomResult() {
   resetMontantMise();
   resetParis();
   eraseDisplayParis();
+}
+
+/*---------------------------Chrono de 20 seconde puis lance resultat----*/
+
+function startTimer(duration, display) {
+  let timer = duration;
+  const interval = setInterval(() => {
+    const seconds = timer--;
+    display.textContent = seconds;
+
+    if (timer < 0) {
+      clearInterval(interval);
+      display.textContent = "Rien ne va plus !";
+      generateRandomResult();
+      startTimer(20, timerDisplay);
+    }
+  }, 1000);
 }
 
 startTimer(20, timerDisplay);

@@ -1,9 +1,10 @@
-// Ajouter la classe couleur correspondante
+/*----------------------------------------------COULEUR CASES PLATEAU-------------------------------*/
 
 const chiffrePlateau = document.getElementsByClassName("chiffre");
 
 Array.from(chiffrePlateau).forEach(element => {
-  const number = Number(element.id); // Convertir l'ID en nombre
+  /* Converti id de la case en nombre */
+  const number = Number(element.id);
   let colorClass = "";
 
   if (number === 0) {
