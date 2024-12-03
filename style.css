@@ -175,3 +175,20 @@ button {
   height: 70px;
   margin: auto;
 }
+/*--------------------------------jeton Mises placées*/
+
+.jeton {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%; /* Rend l'élément circulaire */
+  font-size: 13px;
+  color: black;
+  display: flex; /* Active le flexbox pour le centrage */
+  align-items: center; /* Centre verticalement */
+  justify-content: center; /* Centre horizontalement */
+  text-align: center; /* Centre le texte si c'est une ligne longue */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Ajout d'une ombre subtile */
+  border: 3px solid #9d1818; /* Bordure légère pour un effet visuel */
+}
+/*<p class="jeton">${mise}</p>*/

@@ -21,7 +21,6 @@ const annulMise = document.getElementById("annulMise");
 function mise1(montant) {
   if (credit >= montant) {
     mise = mise + montant;
-    ///erreue par la
     upDateMise();
     upDateCredit();
     soustraireMise(montant);
