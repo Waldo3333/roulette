@@ -653,12 +653,13 @@ const displayResult = document.getElementById("resultatDisplay");
 function checkNumberWin(resultat) {
   Object.entries(miseParieChiffres).forEach(([key, value]) => {
     if (key === resultat) {
+      let gain = value * 36;
       setTimeout(() => {
         alert(
-          `votre mise sur le ${key} est gagnante, vous avez gagné 36 fois ${value} crédit`
+          `votre mise sur le ${key} est gagnante, vous avez gagné ${gain} crédit`
         );
       }, 200);
-      credit = value * 36;
+      credit += gain;
     } else {
       setTimeout(() => {
         alert(
@@ -676,15 +677,19 @@ function checkNumberWin(resultat) {
 function checkConditionDoubleWin(resultat) {
   Object.entries(miseParieConditionsDouble).forEach(([key, value]) => {
     if (chiffre[resultat][key]) {
-      setTimeout(() => {
-        alert(`Votre mise sur ${key} est gagnante`);
-      }, 200);
       let gain = value * 2;
+      setTimeout(() => {
+        alert(
+          `Votre mise sur ${key} est gagnante vous avez gagné ${gain} crédit`
+        );
+      }, 200);
       credit += gain;
       upDateCredit();
     } else {
       setTimeout(() => {
-        alert(`Votre mise sur ${key} est perdante`);
+        alert(
+          `Votre mise sur ${key} est perdante vous avez perdu ${value} crédit`
+        );
       }, 200);
     }
   });
@@ -695,15 +700,19 @@ function checkConditionDoubleWin(resultat) {
 function checkConditionTripleWin(resultat) {
   Object.entries(miseParieConditionsTriple).forEach(([key, value]) => {
     if (chiffre[resultat][key]) {
-      setTimeout(() => {
-        alert(`Votre mise sur ${key} est gagnante`);
-      }, 200);
       let gain = value * 3;
+      setTimeout(() => {
+        alert(
+          `Votre mise sur ${key} est gagnante vous avez gagné ${gain} crédit `
+        );
+      }, 200);
       credit += gain;
       upDateCredit();
     } else {
       setTimeout(() => {
-        alert(`Votre mise sur ${key} est perdante`);
+        alert(
+          `Votre mise sur ${key} est perdante vous avez perdu ${value} crédit`
+        );
       }, 200);
     }
   });
@@ -731,7 +740,7 @@ function startTimer(duration, display) {
 
     if (timer < 0) {
       clearInterval(interval); // Stoppe le minuteur
-      display.textContent = "Temps écoulé!";
+      display.textContent = "Rien ne va plus !";
       generateRandomResult();
       startTimer(20, timerDisplay);
     }
