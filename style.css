@@ -11,15 +11,73 @@ body {
   background-color: black;
 }
 .green {
-  background-color: rgb(26, 171, 24);
+  background-color: rgb(30, 129, 65);
 }
 
-/*--------------------------------------------------------------div mère du Plateau*/
+/*----------------------------------------------------INTO TOP-----------------------------------------*/
+/*-----------------------------------------------Resultat*/
+.resultat {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.resultat p {
+  text-align: center;
+}
+#resultatDisplay {
+  font-size: 40px;
+  text-align: center;
+}
+.infoTop {
+  margin-left: 10vw;
+}
+.credit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+.creditNumber {
+  font-size: 40px;
+  margin: 0;
+}
+
+/*----------------------------------------------------PARENT PLATEAU-----------------------------------*/
 .rouletteContainerMain {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  background-color: brown;
+  width: max-content;
+  padding: 100px 90px 90px 90px;
+  height: max-content;
+  border-radius: 45%;
+  border: solid 10px red;
 }
-/*---------------------------partie chiffre /0/ et condition coté*/
+/*--------------------------- PARENT DE --- PLATEAU TIMER ET DELET PARIS-----------------------------*/
+.PlateauDelParis {
+  display: flex;
+  justify-content: space-evenly;
+}
+.timerContainer {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 20vw;
+}
+.timer {
+  font-size: 50px;
+}
+/*-------------------------------------------PLATEAU PARTIE HAUTE----------chiffre & x3 droite-----*/
 #roulettePlateauHorizontal {
   display: flex;
   justify-content: center;
@@ -32,7 +90,7 @@ td {
   font-weight: bold;
   table-layout: fixed;
   border-collapse: collapse;
-  background-color: rgb(153, 113, 52);
+  background-color: rgb(30, 129, 65);
   cursor: pointer;
 }
 table {
@@ -125,7 +183,7 @@ table {
   align-items: center;
 }
 
-/*---------------------------------------------------div mère tout en haut (sauf paris)*/
+/*-------------------------------div mère tout en haut (sauf paris)*/
 #rouletteContainer {
   display: flex;
   align-items: center;
@@ -135,15 +193,7 @@ table {
   font-weight: 400;
   font-style: normal;
 }
-/*-----------------------------------------------Resultat*/
-#resultatDisplay {
-  width: 170px;
-  height: 70px;
-  background-color: blue;
-}
-.infoTop {
-  margin-left: 30px;
-}
+
 /*------------------------------------------------------------------info mère paris*/
 .displayPariPlacees {
   min-height: 20vh;
@@ -152,43 +202,80 @@ table {
   font-style: normal;
 }
 
-/*-----------------------------------------------------style bouton */
+/*-----------------------------------------------------BOUTONS----------------------------------------------*/
 button {
   font-style: "Roboto", sans-serif;
   font-weight: 600;
   font-style: normal;
+  transition: ease-out 0.1s;
+  cursor: pointer;
 }
+
+button:hover {
+  transform: scale(90%);
+}
+
 .boutonMise {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: solid 3px rgb(255, 0, 0);
 }
 .boutonMiseTout {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  border: solid 3px rgb(255, 0, 0);
 }
 
+/*-------------------------------------Bouton annuler mise*/
+.annulMise {
+  width: 80px;
+  height: 100px;
+  border-radius: 50%;
+}
+/*-------------------------------------Bouton annuler paris*/
+.buttonRetirParis-container {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .buttonRetirParis {
-  margin-top: 200px;
   width: 100px;
   height: 70px;
-  margin: auto;
+  border-radius: 30px;
 }
-/*--------------------------------jeton Mises placées*/
+/*----------------------------------------------------------JETONS-------------------------------------------*/
 
 .jeton {
+  font-size: 13px;
   width: 25px;
   height: 25px;
   background-color: white;
-  border-radius: 50%; /* Rend l'élément circulaire */
-  font-size: 13px;
+  border-radius: 50%;
   color: black;
   display: flex; /* Active le flexbox pour le centrage */
   align-items: center; /* Centre verticalement */
-  justify-content: center; /*
+  justify-content: center;
   text-align: center; /* Centre le texte si c'est une ligne longue */
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Ajout d'une ombre subtile */
-  border: 3px solid #9d1818; /* Bordure légère pour un effet visuel */
+  border: solid 3px rgb(255, 0, 0);
+  margin: 0;
+}
+.jetonMise {
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  color: black;
+  display: flex; /* Active le flexbox pour le centrage */
+  align-items: center; /* Centre verticalement */
+  justify-content: center;
+  text-align: center; /* Centre le texte si c'est une ligne longue */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Ajout d'une ombre subtile */
+  border: solid 3px rgb(255, 0, 0);
+  margin: 0;
 }
 /*<p class="jeton">${mise}</p>*/

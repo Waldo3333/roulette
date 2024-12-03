@@ -8,12 +8,13 @@ let mise = 0;
 function upDateCredit() {
   document.getElementById(
     "credit"
-  ).innerHTML = `Crédit restant : <p class="creditNumber">${credit}</p>`;
+  ).innerHTML = `Crédit: <p class="creditNumber">${credit}</p>`;
 }
 
 /*------------------------ MàJ Affichage Mise */
 function upDateMise() {
-  document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;
+  document.getElementById("mise").innerHTML = `<p>Votre mise :</p>
+        <span class="jetonMise">${mise}</span>`;
 }
 
 /*---------------------------------------------- SELECTION MISE ------------------------------------------*/

@@ -44,7 +44,7 @@ function addJeton(caseElement, mise) {
   if (existingJeton) {
     existingJeton.textContent = parseInt(existingJeton.textContent) + mise;
   } else {
-    caseElement.innerHTML += `<p class="jeton">${mise}</p>`;
+    caseElement.innerHTML = `<p class="jeton">${mise}</p>`;
   }
 }
 
@@ -52,15 +52,18 @@ function addJeton(caseElement, mise) {
 
 /*------------------------------------------Efface les jetons */
 function eraseDisplayParis() {
-  const cases = document.querySelectorAll(
-    ".chiffre, .conditionDouble, .conditionTriple"
-  );
-  cases.forEach(caseElement => {
-    const originalContent = caseElement.getAttribute("data-original-content");
-    if (originalContent) {
-      caseElement.innerHTML = originalContent;
-    }
-  });
+  setTimeout(() => {
+    // Syntaxe correcte pour le setTimeout
+    const cases = document.querySelectorAll(
+      ".chiffre, .conditionDouble, .conditionTriple"
+    );
+    cases.forEach(caseElement => {
+      const originalContent = caseElement.getAttribute("data-original-content");
+      if (originalContent) {
+        caseElement.innerHTML = originalContent;
+      }
+    });
+  }, 300);
 }
 
 /* -------------------------------Ajoute la mise au crédit, vide tableau, efface jeton */
