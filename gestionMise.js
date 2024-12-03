@@ -3,7 +3,7 @@ const displayCredit = document.getElementById("credit");
 let credit = 100;
 let mise = 0;
 function upDateCredit() {
-  displayCredit.innerHTML = `Crédit restant :<br> ${credit}`;
+  displayCredit.innerHTML = `Crédit restant : <p class="creditNumber">${credit}</p>`;
 }
 function upDateMise() {
   document.getElementById("mise").innerHTML = `<p>Votre mise : ${mise}</p>`;

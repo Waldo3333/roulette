@@ -5,103 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roulette</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Geist+Mono:wght@100..900&family=Maven+Pro:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="rouletteContainer">
-      <div class="infoTop" id="rouletteWheel"></div>
       <div class="infoTop" id="resultatDisplay">RESULTAT :</div>
-      <div class="infoTop" id="credit">
-        Crédit restant :<br />
-        100
+      <div class="infoTop credit" id="credit">
+        Crédit restant :
+        <p class="creditNumber">100</p>
       </div>
       <div class="infoTop">
         <p id="mise">Votre mise : 0</p>
-        <button id="mise1">1</button>
-        <button id="mise5">5</button>
-        <button id="mise10">10</button>
-        <button id="mise50">50</button>
-        <button id="miseTout">ALL IN</button>
+        <button class="boutonMise" id="mise1">1</button>
+        <button class="boutonMise" id="mise5">5</button>
+        <button class="boutonMise" id="mise10">10</button>
+        <button class="boutonMise" id="mise50">50</button>
+        <button class="boutonMiseTout" id="miseTout">ALL IN</button>
         <button id="annulMise">Reset montant mise</button>
-        <button id="retirPari">Annuler les paris</button>
-      </div>
-      <div class="infoTop">
-        <button id="buttonResult">Faites vos jeux</button>
+
+        <div id="timerContainer">
+          Temps restant : <span id="timer">20</span> secondes
+        </div>
       </div>
     </div>
     <div class="displayPariPlacees" id="displayPariPlacees">Vos paris :</div>
-    <div id="roulettePlateauHorizontal">
-      <table class="zero">
-        <td id="0" class="green">0</td>
-      </table>
-      <table class="upperPlateau">
-        <tr>
-          <td class="chiffre" id="3">3</td>
-          <td class="chiffre" id="6">6</td>
-          <td class="chiffre" id="9">9</td>
-          <td class="chiffre" id="12">12</td>
-          <td class="chiffre" id="15">15</td>
-          <td class="chiffre" id="18">18</td>
-          <td class="chiffre" id="21">21</td>
-          <td class="chiffre" id="24">24</td>
-          <td class="chiffre" id="27">27</td>
-          <td class="chiffre" id="30">30</td>
-          <td class="chiffre" id="33">33</td>
-          <td class="chiffre" id="36">36</td>
-          <td class="conditionTriple" id="upSide">2 to 1</td>
-        </tr>
-        <tr>
-          <td class="chiffre" id="2">2</td>
-          <td class="chiffre" id="5">5</td>
-          <td class="chiffre" id="8">8</td>
-          <td class="chiffre" id="11">11</td>
-          <td class="chiffre" id="14">14</td>
-          <td class="chiffre" id="17">17</td>
-          <td class="chiffre" id="20">20</td>
-          <td class="chiffre" id="23">23</td>
-          <td class="chiffre" id="26">26</td>
-          <td class="chiffre" id="29">29</td>
-          <td class="chiffre" id="32">32</td>
-          <td class="chiffre" id="35">35</td>
-          <td class="conditionTriple" id="middleSide">2 to 1</td>
-        </tr>
-        <tr>
-          <td class="chiffre" id="1">1</td>
-          <td class="chiffre" id="4">4</td>
-          <td class="chiffre" id="7">7</td>
-          <td class="chiffre" id="10">10</td>
-          <td class="chiffre" id="13">13</td>
-          <td class="chiffre" id="16">16</td>
-          <td class="chiffre" id="19">19</td>
-          <td class="chiffre" id="22">22</td>
-          <td class="chiffre" id="25">25</td>
-          <td class="chiffre" id="28">28</td>
-          <td class="chiffre" id="31">31</td>
-          <td class="chiffre" id="34">34</td>
-          <td class="conditionTriple" id="downSide">2 to 1</td>
-        </tr>
-      </table>
-    </div>
-    <table class="middlePlateau">
-      <tr>
-        <td class="conditionTriple" id="tierGauche">1st 12</td>
-        <td class="conditionTriple" id="tierMilieu">2nd 12</td>
-        <td class="conditionTriple" id="tierDroite">3rd 12</td>
-      </tr>
-    </table>
-    <table class="downPlateau">
-      <tr>
-        <td class="conditionDouble" id="firstHalf">1 to 18</td>
-        <td class="conditionDouble" id="even">EVEN</td>
-        <td class="conditionDouble" id="red" class="red">RED</td>
-        <td class="conditionDouble" id="black" class="black">BLACK</td>
-        <td class="conditionDouble" id="odd">ODD</td>
-        <td class="conditionDouble" id="secondtHalf">19 to 36</td>
-      </tr>
-    </table>
+    <div class="rouletteContainerMain">
+      <div id="roulettePlateauHorizontal">
+        <table class="zero">
+          <td id="0" class="green"><span>0</span></td>
+        </table>
+        <table class="upperPlateau">
+          <tr>
+            <td class="chiffre" id="3"><span>3</span></td>
+            <td class="chiffre" id="6"><span>6</span></td>
+            <td class="chiffre" id="9"><span>9</span></td>
+            <td class="chiffre" id="12"><span>12</span></td>
+            <td class="chiffre" id="15"><span>15</span></td>
+            <td class="chiffre" id="18"><span>18</span></td>
+            <td class="chiffre" id="21"><span>21</span></td>
+            <td class="chiffre" id="24"><span>24</span></td>
+            <td class="chiffre" id="27"><span>27</span></td>
+            <td class="chiffre" id="30"><span>30</span></td>
+            <td class="chiffre" id="33"><span>33</span></td>
+            <td class="chiffre" id="36"><span>36</span></td>
+          </tr>
+          <tr>
+            <td class="chiffre" id="2"><span>2</span></td>
+            <td class="chiffre" id="5"><span>5</span></td>
+            <td class="chiffre" id="8"><span>8</span></td>
+            <td class="chiffre" id="11"><span>11</span></td>
+            <td class="chiffre" id="14"><span>14</span></td>
+            <td class="chiffre" id="17"><span>17</span></td>
+            <td class="chiffre" id="20"><span>20</span></td>
+            <td class="chiffre" id="23"><span>23</span></td>
+            <td class="chiffre" id="26"><span>26</span></td>
+            <td class="chiffre" id="29"><span>29</span></td>
+            <td class="chiffre" id="32"><span>32</span></td>
+            <td class="chiffre" id="35"><span>35</span></td>
+          </tr>
+          <tr>
+            <td class="chiffre" id="1"><span>1</span></td>
+            <td class="chiffre" id="4"><span>4</span></td>
+            <td class="chiffre" id="7"><span>7</span></td>
+            <td class="chiffre" id="10"><span>10</span></td>
+            <td class="chiffre" id="13"><span>13</span></td>
+            <td class="chiffre" id="16"><span>16</span></td>
+            <td class="chiffre" id="19"><span>19</span></td>
+            <td class="chiffre" id="22"><span>22</span></td>
+            <td class="chiffre" id="25"><span>25</span></td>
+            <td class="chiffre" id="28"><span>28</span></td>
+            <td class="chiffre" id="31"><span>31</span></td>
+            <td class="chiffre" id="34"><span>34</span></td>
+          </tr>
+        </table>
 
+        <table class="tierGauche">
+          <tr>
+            <td class="conditionTriple" id="upSide"><span>2 to 1</span></td>
+          </tr>
+          <tr>
+            <td class="conditionTriple" id="middleSide"><span>2 to 1</span></td>
+          </tr>
+          <tr>
+            <td class="conditionTriple" id="downSide"><span>2 to 1</span></td>
+          </tr>
+        </table>
+      </div>
+      <table class="middlePlateau">
+        <tr>
+          <td class="conditionTriple" id="tierGauche">1st 12</td>
+          <td class="conditionTriple" id="tierMilieu">2nd 12</td>
+          <td class="conditionTriple" id="tierDroite">3rd 12</td>
+        </tr>
+      </table>
+      <table class="downPlateau">
+        <tr>
+          <td class="conditionDouble" id="firstHalf">1 - 18</td>
+          <td class="conditionDouble" id="even">EVEN</td>
+          <td class="conditionDouble red" id="red" class="red">RED</td>
+          <td class="conditionDouble black" id="black" class="black">BLACK</td>
+          <td class="conditionDouble" id="odd">ODD</td>
+          <td class="conditionDouble" id="secondtHalf">19 - 36</td>
+        </tr>
+      </table>
+      <button class="buttonRetirParis" id="retirPari">Annuler les paris</button>
+    </div>
     <script src="./classeCouleur.js"></script>
     <script src="./gestionMise.js"></script>
     <script src="./gestionParie.js"></script>
     <script src="./gestionResultat.js"></script>
+    <script src="./minuteur.js"></script>
   </body>
 </html>

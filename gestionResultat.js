@@ -646,24 +646,26 @@ const chiffre = [
   },
 ];
 
-const buttonResult = document.getElementById("buttonResult");
 const displayResult = document.getElementById("resultatDisplay");
-
-buttonResult.addEventListener("click", () => generateRandomResult());
 
 // check Win Numero Exacte
 
 function checkNumberWin(resultat) {
   Object.entries(miseParieChiffres).forEach(([key, value]) => {
     if (key === resultat) {
-      alert(
-        `votre mise sur le ${key} est gagnante, vous avez gagné 36 fois ${value} crédit`
-      );
+      setTimeout(() => {
+        alert(
+          `votre mise sur le ${key} est gagnante, vous avez gagné 36 fois ${value} crédit`
+        );
+      }, 200);
       credit = value * 36;
     } else {
-      alert(
-        ` votre mise sur le ${key} est perdante,vous avez perdu ${value} crédit`
-      );
+      setTimeout(() => {
+        alert(
+          ` votre mise sur le ${key} est perdante,vous avez perdu ${value} crédit`
+        );
+      }, 200);
+
       upDateCredit();
     }
   });
@@ -674,12 +676,16 @@ function checkNumberWin(resultat) {
 function checkConditionDoubleWin(resultat) {
   Object.entries(miseParieConditionsDouble).forEach(([key, value]) => {
     if (chiffre[resultat][key]) {
-      alert(`Votre mise sur ${key} est gagnante`);
+      setTimeout(() => {
+        alert(`Votre mise sur ${key} est gagnante`);
+      }, 200);
       let gain = value * 2;
       credit += gain;
       upDateCredit();
     } else {
-      alert(`Votre mise sur ${key} est perdante`);
+      setTimeout(() => {
+        alert(`Votre mise sur ${key} est perdante`);
+      }, 200);
     }
   });
 }
@@ -689,12 +695,16 @@ function checkConditionDoubleWin(resultat) {
 function checkConditionTripleWin(resultat) {
   Object.entries(miseParieConditionsTriple).forEach(([key, value]) => {
     if (chiffre[resultat][key]) {
-      alert(`Votre mise sur ${key} est gagnante`);
+      setTimeout(() => {
+        alert(`Votre mise sur ${key} est gagnante`);
+      }, 200);
       let gain = value * 3;
       credit += gain;
       upDateCredit();
     } else {
-      alert(`Votre mise sur ${key} est perdante`);
+      setTimeout(() => {
+        alert(`Votre mise sur ${key} est perdante`);
+      }, 200);
     }
   });
 }
@@ -711,6 +721,26 @@ function resetMontantMise() {
 
 //--------------------------------------fonction mère !!!!! ////
 
+// implantation d'un chrono de 30 seconde avant le résultat
+
+function startTimer(duration, display) {
+  let timer = duration;
+  const interval = setInterval(() => {
+    const seconds = timer--; // Décrémente le timer
+    display.textContent = seconds;
+
+    if (timer < 0) {
+      clearInterval(interval); // Stoppe le minuteur
+      display.textContent = "Temps écoulé!";
+      generateRandomResult();
+      startTimer(20, timerDisplay);
+    }
+  }, 1000); // Met à jour toutes les secondes
+}
+
+// Récupère l'élément d'affichage du minuteur
+const timerDisplay = document.getElementById("timer");
+
 function generateRandomResult() {
   const resultat = Math.floor(Math.random() * 37);
   displayResult.innerHTML = "RESULTAT :" + resultat;
@@ -721,3 +751,5 @@ function generateRandomResult() {
   resetParis();
   eraseDisplayParis();
 }
+
+startTimer(20, timerDisplay);
