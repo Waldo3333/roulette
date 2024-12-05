@@ -82,23 +82,26 @@ function identifNumber(angleRoue, angleBille) {
   console.log("Angle de la roue: " + angleRoue);
   console.log("Angle de la bille: " + angleBille);
 
+  // Calcul de la différence entre les angles
   let difference = angleRoue - angleBille;
   if (difference < 0) {
-    console.log("c'etait en dessous de zero");
-    difference = difference + 360;
+    difference += 360; // Normalisation si la différence est négative
   }
 
-  console.log("difference de: " + difference);
-  let angleFinal = 360 - difference;
-  console.log(angleFinal);
-  const segmentAngle = 360 / 37;
+  let angleFinal = 360 - difference; // Conversion en position dans le sens horaire
+  console.log("Angle final (dans le sens horaire): " + angleFinal);
+  console.log(RouletteNumberOrder);
 
-  // Trouver l'index du segment correspondant
-  const index = Math.floor(angleFinal / segmentAngle);
+  const anglePerNumber = 360 / totalNumbers; // Chaque segment couvre cette portion d'angle
+  let index = Math.floor(angleFinal / anglePerNumber + 1);
 
-  // Récupérer le numéro correspondant
-  const number = RouletteNumberOrder[index + 1];
+  // Gérer les dépassements (quand angleFinal correspond exactement à 360° ou à une limite supérieure)
+  if (index >= totalNumbers) {
+    index = 0;
+  }
 
+  // Trouver le numéro correspondant dans l'ordre de la roulette
+  const number = RouletteNumberOrder[index];
   console.log("Chiffre sur lequel la bille s'est arrêtée: " + number);
 }
 
