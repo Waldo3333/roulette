@@ -11,8 +11,20 @@
       href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Geist+Mono:wght@100..900&family=Maven+Pro:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./styleRoulette.css" />
   </head>
   <body>
+    <!-- roulette -->
+    <div class="rouletteWheelMainContainer">
+      <div class="ExtWheel">
+        <div id="InterWheel" style="transform: rotate(0deg)">
+          <div class="InterWheelMiddle"></div>
+        </div>
+        <div id="billeWheel" style="transform: rotate(0deg)"></div>
+      </div>
+      <button id="rouletteButton"></button>
+    </div>
+    <!-- ancien code  -->
     <div id="rouletteContainer">
       <div class="timerContainer" id="timerContainer">
         Faites vos jeux :
@@ -139,5 +151,7 @@
     <script src="./gestionParie.js"></script>
     <script src="./gestionResultat.js"></script>
     <script src="./minuteur.js"></script>
+    <script src="./roulette.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
   </body>
 </html>

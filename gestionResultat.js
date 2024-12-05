@@ -752,6 +752,7 @@ function startTimer(duration, display) {
       clearInterval(interval);
       display.textContent = "0";
       generateRandomResult();
+
       startTimer(20, timerDisplay);
     }
   }, 1000);
