@@ -726,8 +726,6 @@ function resetMontantMise() {
 
 //----------------------------------- AFFICHAGE RESULTAT + CHECK WIN------------------------------------ ////
 
-const displayResult = document.getElementById("resultatDisplay");
-
 /*---------------------------Chrono de 20 seconde puis lance resultat----*/
 const timerDisplay = document.getElementById("timer");
 function startTimer(duration, display) {

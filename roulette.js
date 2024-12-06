@@ -102,7 +102,22 @@ function identifNumber(angleRoue, angleBille) {
   // Trouver le numéro correspondant dans l'ordre de la roulette
   const number = RouletteNumberOrder[index];
   console.log("Chiffre sur lequel la bille s'est arrêtée: " + number);
+  let colorClass = "";
   displayResult.innerHTML = number;
+
+  if (number === 0) {
+    colorClass = "green"; // Le zéro est vert
+  } else if (number >= 1 && number <= 10) {
+    colorClass = number % 2 === 0 ? "black" : "red";
+  } else if (number >= 11 && number <= 18) {
+    colorClass = number % 2 === 0 ? "red" : "black";
+  } else if (number >= 19 && number <= 28) {
+    colorClass = number % 2 === 0 ? "black" : "red";
+  } else {
+    colorClass = number % 2 === 0 ? "red" : "black";
+  }
+  displayResult.classList.remove("black", "red", "green"); // Retirer toutes les classes possibles
+  displayResult.classList.add(colorClass);
   checkNumberWin(number);
   checkConditionDoubleWin(number);
   checkConditionTripleWin(number);
@@ -112,6 +127,7 @@ function identifNumber(angleRoue, angleBille) {
 }
 
 /* --------------------genere une valeur random // fait tourner // recupere l'angle------------------------- */
+const displayResult = document.getElementById("resultatDisplay");
 
 function randomValueRotation() {
   disableParis();

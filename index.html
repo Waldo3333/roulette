@@ -14,16 +14,8 @@
     <link rel="stylesheet" href="./styleRoulette.css" />
   </head>
   <body>
-    <!-- roulette -->
-    <div class="rouletteWheelMainContainer">
-      <div class="ExtWheel">
-        <div id="InterWheel" style="transform: rotate(0deg)">
-          <div class="InterWheelMiddle"></div>
-        </div>
-        <div id="billeWheel" style="transform: rotate(0deg)"></div>
-      </div>
-    </div>
     <!-- ancien code  -->
+
     <div id="rouletteContainer">
       <div class="timerContainer" id="timerContainer">
         Faites vos jeux :
@@ -140,9 +132,16 @@
           Annuler les paris
         </button>
       </div>
-      <div class="resultat">
-        <div><p>RESULTAT :</p></div>
-        <div id="resultatDisplay">12</div>
+      <!-- roulette -->
+      <div class="rouletteWheelMainContainer">
+        <div class="ExtWheel">
+          <div id="InterWheel" style="transform: rotate(0deg)"></div>
+          <div id="billeWheel" style="transform: rotate(0deg)"></div>
+
+          <div class="resultat">
+            <div id="resultatDisplay"></div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="./classeCouleur.js"></script>
