@@ -40,11 +40,15 @@ function updateMiseParie(caseId, mise, type) {
 /* ------verifie si jeton existe déjà, additionne avec existant
    ou ajoute nouveau jeton */
 function addJeton(caseElement, mise) {
-  const existingJeton = caseElement.querySelector(".jeton");
-  if (existingJeton) {
-    existingJeton.textContent = parseInt(existingJeton.textContent) + mise;
+  if (mise === 0) {
+    return;
   } else {
-    caseElement.innerHTML = `<p class="jeton">${mise}</p>`;
+    const existingJeton = caseElement.querySelector(".jeton");
+    if (existingJeton) {
+      existingJeton.textContent = parseInt(existingJeton.textContent) + mise;
+    } else {
+      caseElement.innerHTML = `<p class="jeton">${mise}</p>`;
+    }
   }
 }
 
@@ -90,15 +94,6 @@ function deletBet() {
   resetParis();
   upDateCredit();
   eraseDisplayParis();
-}
-/* ------------------------------------désactivation des paris pendant la roue------------------- */
-let functionActive = true;
-function disableParis() {
-  functionActive = false;
-}
-// Pour réactiver les paris
-function enableParis() {
-  functionActive = true;
 }
 
 /*-------------------------------------------INIT MANCHE---------------------------------------- */

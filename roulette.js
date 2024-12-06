@@ -3,6 +3,7 @@
 const rouletteContainer = document.getElementById("InterWheel");
 const billeContainer = document.getElementById("billeWheel");
 const totalNumbers = 37; // Nombre total de chiffres (0 à 36)
+let currentRotation = 0;
 const RouletteNumberOrder = [
   0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24,
   16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26,
@@ -31,9 +32,9 @@ function createWheelNumber() {
     rouletteContainer.appendChild(numberDiv);
   }
 }
+createWheelNumber();
 /* ----------------------------------faire tourner la roue et bille----------------------------------------- */
 
-let currentRotation = 0;
 function tournerRoueBille(valueRotation) {
   /**-------------------------- Tourner la roue */
   rouletteContainer.style.transition =
@@ -46,12 +47,18 @@ function tournerRoueBille(valueRotation) {
     "transform 5s cubic-bezier(0.33, 1, 0.92, 1.03)";
   billeContainer.style.transform = `rotate(${billeRotation}deg)`;
 }
+/* ------------------------Remplace le degré de style rotate pour eviter d'incrementer à l'infini  */
+function replaceRotate(angle, angleBille) {
+  rouletteContainer.style.transition = "none";
+  billeContainer.style.transition = "none";
+  rouletteContainer.style.transform = `rotate(${angle}deg)`;
+  billeContainer.style.transform = `rotate(${angleBille}deg)`;
+}
 /*------------------------------recupèrer l'angle de la roue apres rotation--------------------------------- */
-function getRoueDegrees(roue, bille) {
+function getRoueDegrees(roue) {
   const style = window.getComputedStyle(roue);
   const transform = style.transform;
   const matrix = transform.match(/^matrix\((.+)\)$/);
-  console.log(matrix);
 
   if (matrix) {
     const values = matrix[1].split(", ");
@@ -63,50 +70,17 @@ function getRoueDegrees(roue, bille) {
       angle += 360;
     }
     if (angleBille < 0) {
-      angleBille += 360;
+      angleBille += 355;
     }
 
-    // Mettre à jour l'attribut de rotation de l'élément
-    rouletteContainer.style.transition = "none"; // Annule la transition avant de changer la rotation
-    billeContainer.style.transition = "none"; // Annule la transition avant de changer la rotation
-    rouletteContainer.style.transform = `rotate(${angle}deg)`; // Applique la rotation calculée
-    billeContainer.style.transform = `rotate(${angleBille}deg)`; // Applique la rotation calculée
+    replaceRotate(angle, angleBille);
     identifNumber(angle, angleBille);
   }
 }
-
-/*--------------------------------------identifier nombre après la rotation--------------------------------- */
-
-function identifNumber(angleRoue, angleBille) {
-  console.log("Angle de la roue: " + angleRoue);
-  console.log("Angle de la bille: " + angleBille);
-
-  // Calcul de la différence entre les angles
-  let difference = angleRoue - angleBille;
-  if (difference < 0) {
-    difference += 360; // Normalisation si la différence est négative
-  }
-
-  let angleFinal = 360 - difference; // Conversion en position dans le sens horaire
-  console.log("Angle final (dans le sens horaire): " + angleFinal);
-  console.log(RouletteNumberOrder);
-
-  const anglePerNumber = 360 / totalNumbers; // Chaque segment couvre cette portion d'angle
-  let index = Math.floor(angleFinal / anglePerNumber + 1);
-
-  // Gérer les dépassements (quand angleFinal correspond exactement à 360° ou à une limite supérieure)
-  if (index >= totalNumbers) {
-    index = 0;
-  }
-
-  // Trouver le numéro correspondant dans l'ordre de la roulette
-  const number = RouletteNumberOrder[index];
-  console.log("Chiffre sur lequel la bille s'est arrêtée: " + number);
-  let colorClass = "";
-  displayResult.innerHTML = number;
-
+/*-------------------------------- ajout classe couleur à resulat display */
+function changeColor(number, colorClass) {
   if (number === 0) {
-    colorClass = "green"; // Le zéro est vert
+    colorClass = "green";
   } else if (number >= 1 && number <= 10) {
     colorClass = number % 2 === 0 ? "black" : "red";
   } else if (number >= 11 && number <= 18) {
@@ -116,8 +90,38 @@ function identifNumber(angleRoue, angleBille) {
   } else {
     colorClass = number % 2 === 0 ? "red" : "black";
   }
-  displayResult.classList.remove("black", "red", "green"); // Retirer toutes les classes possibles
+  displayResult.classList.remove("black", "red", "green");
   displayResult.classList.add(colorClass);
+}
+
+/*--------------------------------------identifier nombre après la rotation--------------------------------- */
+
+function identifNumber(angleRoue, angleBille) {
+  console.log("Angle de la roue: " + angleRoue);
+  console.log("Angle de la bille: " + angleBille);
+  let colorClass = "";
+
+  /*---------------------------------Calcul de la différence entre les angles bille et roue*/
+  let difference = angleRoue - angleBille;
+  if (difference < 0) {
+    difference += 360;
+  }
+  /*---------------------------------Calcul angle pour checker numero correspondant*/
+  let angleFinal = 360 - difference;
+  /*---------------------------------Chaque segment couvre cette portion d'angle */
+  const anglePerNumber = 360 / totalNumbers;
+  let index = Math.floor(angleFinal / anglePerNumber + 1); // +1 car leger décalage autrement
+
+  /*------------------------------- reset de l'index si besoin*/
+  if (index >= totalNumbers) {
+    index = 0;
+  }
+  /*----------------Trouver le numéro correspondant dans l'ordre de la roulette et l'affiche*/
+  const number = RouletteNumberOrder[index];
+  displayResult.innerHTML = number;
+
+  /* -----------------------------lancer tous les check et reinit manche*/
+  changeColor(number, colorClass);
   checkNumberWin(number);
   checkConditionDoubleWin(number);
   checkConditionTripleWin(number);
@@ -132,7 +136,7 @@ const displayResult = document.getElementById("resultatDisplay");
 function randomValueRotation() {
   disableParis();
   const randomNumber = Math.floor(Math.random() * 360);
-  const randomRotation = 880 + randomNumber;
+  const randomRotation = 1880 + randomNumber;
   roue = rouletteContainer;
   bille = billeContainer;
   console.log(randomRotation);
@@ -142,6 +146,26 @@ function randomValueRotation() {
     enableParis();
   }, 5000);
 }
-/* ----------------------------------------------INIT---------------------------------------------------- */
 
-createWheelNumber();
+//----------------------------------- AFFICHAGE RESULTAT + CHECK WIN------------------------------------ ////
+
+/*---------------------------Chrono de 20 seconde puis lance la roue----*/
+const timerDisplay = document.getElementById("timer");
+function startTimer(duration, display) {
+  let timer = duration;
+  const interval = setInterval(() => {
+    const seconds = timer--;
+    display.textContent = seconds;
+
+    if (timer < 0) {
+      clearInterval(interval);
+      display.textContent = "0";
+      randomValueRotation();
+      setTimeout(() => {
+        startTimer(20, timerDisplay);
+      }, 5000);
+    }
+  }, 1000);
+}
+
+startTimer(20, timerDisplay);

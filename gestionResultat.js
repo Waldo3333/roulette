@@ -646,7 +646,16 @@ const chiffre = [
   },
 ];
 /*-------------------------------------------------CHECKER LES WINS---------------------------------------*/
+/* ------------------------------------désactivation des paris pendant la roue------------------- */
+let functionActive = true;
 
+function disableParis() {
+  functionActive = false;
+}
+// Pour réactiver les paris
+function enableParis() {
+  functionActive = true;
+}
 /*---------------------------------Check Win Numero Exacte-------*/
 function checkNumberWin(resultat) {
   Object.entries(miseParieChiffres).forEach(([key, value]) => {
@@ -723,30 +732,3 @@ function resetMontantMise() {
   mise = 0;
   upDateMise();
 }
-
-//----------------------------------- AFFICHAGE RESULTAT + CHECK WIN------------------------------------ ////
-
-/*---------------------------Chrono de 20 seconde puis lance resultat----*/
-const timerDisplay = document.getElementById("timer");
-function startTimer(duration, display) {
-  let timer = duration;
-  const interval = setInterval(() => {
-    const seconds = timer--;
-    display.textContent = seconds;
-
-    if (timer < 0) {
-      clearInterval(interval);
-      display.textContent = "0";
-      //désactiver les fonctions de paris
-
-      randomValueRotation();
-      // réactiver les fonctions de paris
-
-      setTimeout(() => {
-        startTimer(20, timerDisplay);
-      }, 5000);
-    }
-  }, 1000);
-}
-
-startTimer(20, timerDisplay);
