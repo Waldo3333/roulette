@@ -728,18 +728,6 @@ function resetMontantMise() {
 
 const displayResult = document.getElementById("resultatDisplay");
 
-/* ------------------------function qui Genere le résultat --- */
-function generateRandomResult() {
-  const resultat = Math.floor(Math.random() * 37);
-  displayResult.innerHTML = resultat;
-  checkNumberWin(resultat);
-  checkConditionDoubleWin(resultat);
-  checkConditionTripleWin(resultat);
-  resetMontantMise();
-  resetParis();
-  eraseDisplayParis();
-}
-
 /*---------------------------Chrono de 20 seconde puis lance resultat----*/
 const timerDisplay = document.getElementById("timer");
 function startTimer(duration, display) {
@@ -751,9 +739,14 @@ function startTimer(duration, display) {
     if (timer < 0) {
       clearInterval(interval);
       display.textContent = "0";
-      generateRandomResult();
+      //désactiver les fonctions de paris
 
-      startTimer(20, timerDisplay);
+      randomValueRotation();
+      // réactiver les fonctions de paris
+
+      setTimeout(() => {
+        startTimer(20, timerDisplay);
+      }, 5000);
     }
   }, 1000);
 }

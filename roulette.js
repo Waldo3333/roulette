@@ -2,7 +2,6 @@
 
 const rouletteContainer = document.getElementById("InterWheel");
 const billeContainer = document.getElementById("billeWheel");
-const bouton = document.getElementById("rouletteButton");
 const totalNumbers = 37; // Nombre total de chiffres (0 à 36)
 const RouletteNumberOrder = [
   0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24,
@@ -103,11 +102,19 @@ function identifNumber(angleRoue, angleBille) {
   // Trouver le numéro correspondant dans l'ordre de la roulette
   const number = RouletteNumberOrder[index];
   console.log("Chiffre sur lequel la bille s'est arrêtée: " + number);
+  displayResult.innerHTML = number;
+  checkNumberWin(number);
+  checkConditionDoubleWin(number);
+  checkConditionTripleWin(number);
+  resetMontantMise();
+  resetParis();
+  eraseDisplayParis();
 }
 
 /* --------------------genere une valeur random // fait tourner // recupere l'angle------------------------- */
 
 function randomValueRotation() {
+  disableParis();
   const randomNumber = Math.floor(Math.random() * 360);
   const randomRotation = 880 + randomNumber;
   roue = rouletteContainer;
@@ -116,14 +123,9 @@ function randomValueRotation() {
   tournerRoueBille(randomRotation);
   setTimeout(() => {
     getRoueDegrees(roue);
+    enableParis();
   }, 5000);
 }
 /* ----------------------------------------------INIT---------------------------------------------------- */
 
-function initRotation() {
-  bouton.addEventListener("click", () => {
-    randomValueRotation(); // Appeler tournerRoueBille uniquement après le clic
-  });
-}
 createWheelNumber();
-initRotation();

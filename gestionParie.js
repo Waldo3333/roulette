@@ -91,6 +91,15 @@ function deletBet() {
   upDateCredit();
   eraseDisplayParis();
 }
+/* ------------------------------------désactivation des paris pendant la roue------------------- */
+let functionActive = true;
+function disableParis() {
+  functionActive = false;
+}
+// Pour réactiver les paris
+function enableParis() {
+  functionActive = true;
+}
 
 /*-------------------------------------------INIT MANCHE---------------------------------------- */
 
@@ -103,6 +112,7 @@ function init() {
 
     /* Place un paris */
     caseElement.addEventListener("click", () => {
+      if (!functionActive) return;
       const caseId = caseElement.id;
 
       updateMiseParie(caseId, mise, "chiffre");
@@ -121,6 +131,7 @@ function init() {
 
     /* Place un paris */
     caseElement.addEventListener("click", () => {
+      if (!functionActive) return;
       const caseId = caseElement.id;
 
       updateMiseParie(caseId, mise, "conditionDouble");
@@ -139,6 +150,7 @@ function init() {
 
     /* Place un paris */
     caseElement.addEventListener("click", () => {
+      if (!functionActive) return;
       const caseId = caseElement.id;
 
       updateMiseParie(caseId, mise, "conditionTriple");
